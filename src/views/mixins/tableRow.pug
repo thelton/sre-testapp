@@ -1,0 +1,10 @@
+mixin tableRow(student)
+  tr 
+    td=student.id 
+    td=student.name 
+    td=student.email 
+    td=student.age 
+    td=new Date(student.dob).toISOString().substring(0,10)
+    td 
+      a(href=`/${student.id}/delete?_method=DELETE`)
+        i(id="delete" class="fas fa-trash")

@@ -1,0 +1,10 @@
+extends templates/layout
+
+block content
+  h1 Add Students
+  form(method="POST" action="/createStudent")
+    input(name="name" type="text" placeholder="Name" required)
+    input(name="email" type="email" placeholder="Email" required)
+    input(name="age" type="number" placeholder="Age" required)
+    input(name="dob" type="date"  placeholder="Date of Birth" required)
+    input(type="submit" value="Add")

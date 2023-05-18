@@ -1,0 +1,12 @@
+extends templates/layout
+include mixins/table
+
+block content
+  div 
+    form(method="GET" action=`/search`)
+      input(name="email" type="email" placeholder="Email")
+      input(type="submit" value="Search")
+  div
+    a(href="/getAddStudentForm") Add Student 
+  +table(students)
+    

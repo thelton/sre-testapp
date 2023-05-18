@@ -1,0 +1,16 @@
+include ./tableRow
+
+mixin table(students)
+  table 
+    tr
+      th id 
+      th name 
+      th email 
+      th age 
+      th dob 
+      th delete
+    each student in students
+      +tableRow(student)
+    
+
+  
