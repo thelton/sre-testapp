@@ -50,7 +50,7 @@ const createStudent = (req, res) => {
       const notFound = !results.rows.length;
       if (notFound)
         res.send("Student does not exist in the database, could not remove.");
-      res.status(201).redirect("/");
+        res.status(201).redirect("/");
     }
   );
 };

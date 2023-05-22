@@ -1,0 +1,46 @@
+version: "3"
+services:
+  app:  
+    restart: on-failure
+    build: 
+      dockerfile: dockerfile
+      context: ./
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://pguser:pass@postgres:5432/students
+      NODE_ENV: production
+      PORT: 4000
+      DBUSER: pguser
+      DBPASS: pass
+      POSTGRES_DB: students
+    volumes:
+      - .:/app/
+      - /app/node_modules
+
+  web:
+    restart: always
+    build:
+      dockerfile: web.dockerfile
+      context: ./
+    working_dir: /app
+    volumes_from:
+      - app
+    ports:
+     - 4000:80
+
+  # Local dev
+  # postgres:
+  #   image: postgres:11
+  #   ports:
+  #     - "35432:5432"
+  #   environment:
+  #     POSTGRES_USER: pguser
+  #     POSTGRES_PASSWORD: pass
+  #     POSTGRES_DB: students
+  #   volumes: 
+  #     - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+
+networks:
+  default:
+    name: sre-testapp_default
