@@ -4,6 +4,6 @@ CRED=$(aws secretsmanager get-secret-value --secret-id postgres-creds --region u
 USER=$(echo $CRED | jq '.username' | tr -d '"')
 PASSWORD=$(echo $CRED | jq '.password' | tr -d '"')
 
-docker run dbseed.dockerfile -e DBUSER=$USER -e HOST=$DBHOST
+docker run ./dbseed.dockerfile -e USER=$USER -e HOST=$DBHOST
 
-docker-compose up --build
+docker-compose up --build -d
