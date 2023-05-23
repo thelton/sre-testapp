@@ -50,7 +50,7 @@ services:
       HOST: $DBHOST
     entrypoint: ./docker-entrypoint.sh
     volumes: 
-      - ./docker-entrypoint.sh:./
+      - ./docker-entrypoint.sh:./docker-entrypoint.sh
 
 networks:
   default:
