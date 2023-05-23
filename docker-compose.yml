@@ -42,11 +42,13 @@ services:
     ports:
       - "35432:5432"
     environment:
-      POSTGRES_USER: pguser
+      POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: students
-    # volumes: 
-    #   - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      USER: $USER
+      PGPASSWORD: $PASS
+      HOST: $DBHOST
+    entrypoint: ./docker-entrypoint.sh
 
 networks:
   default:
