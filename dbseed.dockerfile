@@ -1,7 +1,7 @@
 FROM postgres:14
 
-COPY ./docker-entrypoint.sh ./
+COPY ./seed.sh ./seed.sh
 
-RUN chmod +x /docker-entrypoint.sh
+RUN chmod +x /seed.sh
 
-ENTRYPOINT [ "executable" ]
+ENTRYPOINT [ "seed.sh" ]

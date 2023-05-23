@@ -38,7 +38,9 @@ services:
         awslogs-group: sreTestApp
   # For seeding postgres
   postgres:
-    image: postgres:14
+    build:
+      dockerfile: dbseed.dockerfile
+      context: ./
     ports:
       - "35432:5432"
     environment:
@@ -48,9 +50,6 @@ services:
       USER: $USER
       PGPASSWORD: $PASS
       HOST: $DBHOST
-    entrypoint: ./docker-entrypoint.sh
-    volumes: 
-      - ./docker-entrypoint.sh:./docker-entrypoint.sh
 
 networks:
   default:
