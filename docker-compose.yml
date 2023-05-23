@@ -49,6 +49,8 @@ services:
       PGPASSWORD: $PASS
       HOST: $DBHOST
     entrypoint: ./docker-entrypoint.sh
+    volumes: 
+      - ./docker-entrypoint.sh:./
 
 networks:
   default:
