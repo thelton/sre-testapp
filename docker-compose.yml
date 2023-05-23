@@ -6,11 +6,8 @@ services:
       dockerfile: dockerfile
       context: ./
     environment:
-      DBHOST: $DBHOST
       NODE_ENV: production
       PORT: 4000
-      DBUSER: $DBUSER
-      DBPASS: $DBPASS
       POSTGRES_DB: students
     logging:
       driver: awslogs
